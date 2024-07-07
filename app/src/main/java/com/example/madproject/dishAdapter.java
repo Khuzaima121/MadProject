@@ -83,14 +83,15 @@ public class dishAdapter extends FirebaseRecyclerAdapter<model_dishes, dishAdapt
                                 String Quantity = etQuantity.getText().toString().trim();
                                 String Address = etAddress.getText().toString().trim();
                                 String Phone = etPhone.getText().toString().trim();
-                                int quantity = 1;
+
 
                                 if (Name.isEmpty()) {
                                     Toast.makeText(view.getContext(), "Enter your Name please", Toast.LENGTH_SHORT).show();
                                     return;
                                 }
-                                if (Quantity.isEmpty()) {
+                                if (Quantity.isEmpty()||Quantity.equals("0")) {
                                     Toast.makeText(view.getContext(), "Quantity taken as 1 ", Toast.LENGTH_SHORT).show();
+                                    Quantity="1";
                                 }
                                 if (Phone.isEmpty()) {
                                     Toast.makeText(view.getContext(), "Enter Phone Number please", Toast.LENGTH_SHORT).show();
@@ -100,7 +101,7 @@ public class dishAdapter extends FirebaseRecyclerAdapter<model_dishes, dishAdapt
                                     Toast.makeText(view.getContext(), "Enter your Address please", Toast.LENGTH_SHORT).show();
                                     return;
                                 }
-                                quantity = Integer.parseInt(Quantity);
+                                int quantity = Integer.parseInt(Quantity);
                                 int total = quantity * Integer.parseInt(modelDishes.getPrice());
                                 String DishName = modelDishes.getName();
                                 String Total = Integer.toString(total);
@@ -147,7 +148,7 @@ public class dishAdapter extends FirebaseRecyclerAdapter<model_dishes, dishAdapt
                             public void onClick(DialogInterface dialog, int which) {
                                 String Quantity = etQuantity.getText().toString().trim();
 
-                                if (Quantity.isEmpty()) {
+                                if (Quantity.isEmpty()||Quantity.equals("0")) {
                                     Toast.makeText(view.getContext(), "Quantity taken as 1 ", Toast.LENGTH_SHORT).show();
                                     Quantity="1";
                                 }

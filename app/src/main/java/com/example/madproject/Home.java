@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +37,13 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         init();
+
         fabCart.setOnClickListener(v->{
+            if(user==null)
+            {
+                Toast.makeText(this, "Login first", Toast.LENGTH_SHORT).show();
+                return;
+            }
             startActivity(new Intent(Home.this,CartItems.class));
         });
 
